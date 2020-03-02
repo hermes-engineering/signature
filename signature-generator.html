@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+      <div class="row pt-3 pb-5">
+        <h1>Hermes Email Signature Generator</h1>
+      </div>
+        <div class="row">
+            <div class="col-7 pr-5">
+              <div class="row pb-2">
+                <h3>Your information:</h3>
+              </div>
+              <form>
+                <div class="form-group row">
+                  <label for="firstname" class="col-sm-2 col-form-label">First name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstname" value="" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="lastname" class="col-sm-2 col-form-label">Last name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="lastname" value="" />
+                  </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                      <legend class="col-form-label col-sm-2 pt-0">Specialization</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="specialization-se" name="specialization" value="Software Engineer">
+                          <label class="form-check-label" for="specialization-se">Software Engineer</label>
+                        </div>
+                          <div class="form-check">
+                        <input type="radio" class="form-check-input" id="specialization-ds" name="specialization" value="Data Scientist">
+                        <label class="form-check-label" for="specialization-ds">Data Scientist</label>
+                        </div>
+                          <div class="form-check">
+                        <input type="radio" class="form-check-input" id="specialization-it" name="specialization" value="BI Consultant">
+                        <label class="form-check-label" for="specialization-it">BI Consultant</label>
+                        </div>
+                          <div class="form-check">
+                        <input type="radio" class="form-check-input" id="specialization-bi" name="specialization" value="IT Consultant">
+                        <label class="form-check-label" for="specialization-bi">IT Consultant</label>
+                        </div>
+                          <div class="form-check">
+                        <input type="radio" class="form-check-input" id="specialization-other" name="specialization" value="custom">
+                        <label class="form-check-label" for="specialization-other">Other</label>
+                        <input type="text" id="specialization-custom" value="" />
+                        </div>
+                      </div>
+                    </div>
+                    </fieldset>
+                    <div class="form-group row align-items-center">
+                      <label for="seniority" class="col-sm-2 col-form-label">Experience</label>
+                      <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="seniority">
+                        <label class="custom-control-label" for="seniority">Senior experience</label>
+                      </div>
+                    </div>
+                    <fieldset class="form-group">
+                        <div class="row">
+                          <legend class="col-form-label col-sm-2 pt-0">Main internal occupation</legend>
+                          <div class="col-sm-10">
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="internal-occupation-consulant" name="internal-occupation" value="">
+                              <label class="form-check-label" for="internal-occupation-consulant">Consultant</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="internal-occupation-manager" name="internal-occupation" value="Manager">
+                              <label class="form-check-label" for="internal-occupation-manager">Manager</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="internal-occupation-director" name="internal-occupation" value="Director">
+                              <label class="form-check-label" for="internal-occupation-director">Director</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="radio" class="form-check-input" id="internal-occupation-other" name="internal-occupation" value="custom">
+                              <label class="form-check-label" for="internal-occupation-other">Other</label>
+                              <input type="text" id="internal-occupation-custom" value="" />
+                            </div>
+                          </div>
+                        </div>
+                        </fieldset>
+                <div class="form-group row">
+                  <label for="mobile-number" class="col-sm-2 col-form-label">Phone number</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="mobile-number" value="" />
+                  </div>
+                </div>
+                <fieldset class="form-group">
+                    <div  id="phone-formats"class="row mt-n4">
+                      <legend class="col-form-label col-sm-2 pt-0"></legend>
+                      <div class="col-sm-10">
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="phone-format-be" name="phone-format" value="belgium" class="form-check-input" checked>
+                  <label class="form-check-label" for="phone-format-be">Belgium</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="phone-format-lu" name="phone-format" value="luxembourg" class="form-check-input">
+                  <label class="form-check-label" for="phone-format-lu">Luxembourg</label>
+                </div>
+                </div>
+              </div>
+            </fieldset>
+                </form>
+            </div>
+            <div class="col">
+              <div class="row pb-3">
+                <h2>Your generated signature:</h2>
+              </div>
+              <div class="row pt-4 pb-4">
+                <table id="generated-signature" cellspacing="0" cellpadding="0" style="text-decoration:none;border-spacing: 0px; border-collapse: collapse;">
+                    <tr>
+                        <td rowspan="3">
+                            <a href="http://www.hermes-ecs.com"><img src="http://www.hermes-ecs.com/wp-content/uploads/2020/02/logo-signature.png" width="72" height="68" alt="HERMES"></a>
+                        </td>
+
+                        <td rowspan="3" style="width:17px; border-right:2px solid #446fb5"></td>
+
+                        <td style="color:#446fb5;padding-left:21.5px;white-space:nowrap;">
+                            <span id="sig-firstname" style="color:#446fb5;font-family:Arial; font-size:17px;">First name</span>
+                            <span id="sig-lastname" style="color:#446fb5;font-family:Arial; font-size:17px;">LAST NAME</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#6aaddf;padding-left:21.5px;white-space:nowrap;">
+                          <span id="sig-seniority" style="font-family:Arial; font-size:16px;"></span>
+                          <span id="sig-specialization" style="font-family:Arial; font-size:16px;">Specialization</span>
+                          <span id="title-separator" style="font-family:Arial; font-size:16px;"> | </span>
+                          <span id="sig-internal-occupation" style="font-family:Arial; font-size:16px;"></span>
+                        </td>
+                    </tr>
+                    <tr style="text-decoration:none;">
+                        <td style="text-decoration:none;padding-left:21.5px;white-space:nowrap;">
+                            <div><span id="sig-mobile-number" style="text-decoration:none !important; color:#383838; font-family:Arial; font-size:15px;">+32 4xx xx xx xx</span></div>
+                        </td>
+                    </tr>
+                </table>
+              </div>
+              <div class="row">
+                <button class="btn btn-primary" onclick="copySignature()">Copy your signature to the clipboard</button>
+              </div>
+              <div id="confirmation" class="row pt-5" style="display: none">
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Well done!</h4>
+                  <p>Your new signature has been copied to the clipboard. You can now paste it in your favorite email client.</p>
+                  <hr>
+                  <p class="mb-0">If you need some last adjustment, this can be done directly in the signature utility of your email client.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function() {
+        $('#specialization-custom').hide();
+        $('#title-separator').hide();
+        $('#internal-occupation-custom').hide();
+        $("#firstname").on("change paste keyup", function() {
+            $('#sig-firstname').text($(this).val());
+        });
+        $("#lastname").on("change paste keyup", function() {
+            $('#sig-lastname').text($(this).val().toUpperCase());
+        });
+        $("input[type='radio'][name='specialization']").on("change", function() {
+            var selectedSpecialization = $("input[type='radio'][name='specialization']:checked").val();
+
+            if (selectedSpecialization == "custom") {
+                $('#specialization-custom').show();
+                $('#sig-specialization').text("");
+            } else {
+                $('#specialization-custom').hide();
+                $('#sig-specialization').text(selectedSpecialization);
+            }
+        });
+        $("#specialization-custom").on("change paste keyup", function() {
+            $('#sig-specialization').text($(this).val());
+        });
+        $("input[type='radio'][name='internal-occupation']").on("change", function() {
+            var selectedInternalOccupation = $("input[type='radio'][name='internal-occupation']:checked").val();
+
+            if (selectedInternalOccupation == "custom") {
+                $('#internal-occupation-custom').show();
+                $('#sig-internal-occupation').text("");
+            } else {
+                $('#internal-occupation-custom').hide();
+                $('#sig-internal-occupation').text(selectedInternalOccupation);
+            }
+            if (((selectedInternalOccupation == "") || ((selectedInternalOccupation == "custom") && (!$("#internal-occupation-custom").val())))) {
+                $('#title-separator').hide();
+            } else {
+                $('#title-separator').show();
+            }
+        });
+
+        $("#seniority").on("change", function() {
+          if(this.checked) {
+            $('#sig-seniority').text("Senior");
+          } else {
+            $('#sig-seniority').text("");
+          }
+        });
+
+        $("#internal-occupation-custom").on("change paste keyup", function() {
+            if ($("#internal-occupation-custom").val()) {
+                $('#title-separator').show();
+            } else {
+                $('#title-separator').hide();
+            }
+            $('#sig-internal-occupation').text($(this).val());
+        });
+        $("#mobile-number").on("change paste keyup", function() {
+            formatPhoneNumber();
+        });
+
+        $("input[type='radio'][name='phone-format']").on("change", function() {
+            formatPhoneNumber();
+        });
+
+        function formatPhoneNumber() {
+          var selectedPhoneFormat = $("input[type='radio'][name='phone-format']:checked").val();
+          var mobilePhone = $("#mobile-number").val();
+
+          if (selectedPhoneFormat == "belgium") {
+              mobilePhone = formatBeNumber(mobilePhone);
+          } else {
+              mobilePhone = formatLuNumber(mobilePhone);
+          }
+
+          $('#sig-mobile-number').text(mobilePhone);
+        };
+
+        function formatBeNumber(mobilePhone) {
+            mobilePhone = mobilePhone.replace(/ /g, '')
+            mobilePhone = mobilePhone.replace(/\+/g, '')
+            mobilePhone = mobilePhone.replace(/^32/g, '');
+            mobilePhone = mobilePhone.replace(/\(0\)/g, '');
+            mobilePhone = mobilePhone.replace(/^0/, '');
+
+            if (mobilePhone.length < 9) {
+                if ((mobilePhone.charAt(0) == "2") || (mobilePhone.charAt(0) == "3") || (mobilePhone.charAt(0) == "4") || (mobilePhone.charAt(0) == "9")) {
+                    mobilePhone = mobilePhone.replace(/(\d{1})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+                } else {
+                    mobilePhone = mobilePhone.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+                }
+            } else {
+                mobilePhone = mobilePhone.replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+            }
+            return "+32 " + mobilePhone;
+        };
+
+        function formatLuNumber(mobilePhone) {
+            mobilePhone = mobilePhone.replace(/ /g, '')
+            mobilePhone = mobilePhone.replace(/\+/g, '')
+            mobilePhone = mobilePhone.replace(/^352/g, '');
+            mobilePhone = mobilePhone.replace(/\(0\)/g, '');
+            mobilePhone = mobilePhone.replace(/^0/, '');
+
+            if (mobilePhone.length < 9) {
+                mobilePhone = mobilePhone.replace(/(\d{2})(\d*)/, "$1 $2");
+            } else {
+                mobilePhone = mobilePhone.replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3");
+            }
+            return "+352 " + mobilePhone;
+        };
+    });
+
+    function copySignature() {
+      document.getElementById("confirmation").style.display = "block";
+        const doc = document;
+        const text = doc.getElementById("generated-signature");
+        let range;
+        let selection;
+
+        if (doc.body.createTextRange) {
+
+            range = doc.body.createTextRange();
+            range.moveToElement(text);
+            range.select();
+
+        } else if (window.getSelection) {
+
+            selection = window.getSelection();
+
+            range = doc.createRange();
+            range.selectNodeContents(text);
+
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+        }
+
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        document.getElementById('clickMe').value = 'Copied to clipboard!';
+    }
+</script>
+
+</html>
