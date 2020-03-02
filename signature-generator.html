@@ -168,44 +168,67 @@
         $('#specialization-custom').hide();
         $('#title-separator').hide();
         $('#internal-occupation-custom').hide();
+
         $("#firstname").on("change paste keyup", function() {
-            $('#sig-firstname').text($(this).val());
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          $('#sig-firstname').text($(this).val());
         });
+
         $("#lastname").on("change paste keyup", function() {
-            $('#sig-lastname').text($(this).val().toUpperCase());
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          $('#sig-lastname').text($(this).val().toUpperCase());
         });
+
         $("input[type='radio'][name='specialization']").on("change", function() {
-            var selectedSpecialization = $("input[type='radio'][name='specialization']:checked").val();
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          var selectedSpecialization = $("input[type='radio'][name='specialization']:checked").val();
 
-            if (selectedSpecialization == "custom") {
-                $('#specialization-custom').show();
-                $('#sig-specialization').text("");
-            } else {
-                $('#specialization-custom').hide();
-                $('#sig-specialization').text(selectedSpecialization);
-            }
+          if (selectedSpecialization == "custom") {
+              $('#specialization-custom').show();
+              $('#sig-specialization').text("");
+          } else {
+              $('#specialization-custom').hide();
+              $('#sig-specialization').text(selectedSpecialization);
+          }
         });
+
         $("#specialization-custom").on("change paste keyup", function() {
-            $('#sig-specialization').text($(this).val());
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          $('#sig-specialization').text($(this).val());
         });
-        $("input[type='radio'][name='internal-occupation']").on("change", function() {
-            var selectedInternalOccupation = $("input[type='radio'][name='internal-occupation']:checked").val();
 
-            if (selectedInternalOccupation == "custom") {
-                $('#internal-occupation-custom').show();
-                $('#sig-internal-occupation').text("");
-            } else {
-                $('#internal-occupation-custom').hide();
-                $('#sig-internal-occupation').text(selectedInternalOccupation);
-            }
-            if (((selectedInternalOccupation == "") || ((selectedInternalOccupation == "custom") && (!$("#internal-occupation-custom").val())))) {
-                $('#title-separator').hide();
-            } else {
-                $('#title-separator').show();
-            }
+        $("input[type='radio'][name='internal-occupation']").on("change", function() {
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          var selectedInternalOccupation = $("input[type='radio'][name='internal-occupation']:checked").val();
+
+          if (selectedInternalOccupation == "custom") {
+              $('#internal-occupation-custom').show();
+              $('#sig-internal-occupation').text("");
+          } else {
+              $('#internal-occupation-custom').hide();
+              $('#sig-internal-occupation').text(selectedInternalOccupation);
+          }
+          if (((selectedInternalOccupation == "") || ((selectedInternalOccupation == "custom") && (!$("#internal-occupation-custom").val())))) {
+              $('#title-separator').hide();
+          } else {
+              $('#title-separator').show();
+          }
         });
 
         $("#seniority").on("change", function() {
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
           if(this.checked) {
             $('#sig-seniority').text("Senior");
           } else {
@@ -214,19 +237,29 @@
         });
 
         $("#internal-occupation-custom").on("change paste keyup", function() {
-            if ($("#internal-occupation-custom").val()) {
-                $('#title-separator').show();
-            } else {
-                $('#title-separator').hide();
-            }
-            $('#sig-internal-occupation').text($(this).val());
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          if ($("#internal-occupation-custom").val()) {
+              $('#title-separator').show();
+          } else {
+              $('#title-separator').hide();
+          }
+          $('#sig-internal-occupation').text($(this).val());
         });
+
         $("#mobile-number").on("change paste keyup", function() {
-            formatPhoneNumber();
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          formatPhoneNumber();
         });
 
         $("input[type='radio'][name='phone-format']").on("change", function() {
-            formatPhoneNumber();
+          if($('#confirmation').is(":visible")) {
+            $('#confirmation').hide();
+          }
+          formatPhoneNumber();
         });
 
         function formatPhoneNumber() {
