@@ -15,7 +15,7 @@
         <h1>Hermes Email Signature Generator</h1>
       </div>
         <div class="row">
-            <div class="col-7 pr-5">
+            <div class="col-lg-7">
               <div class="row pb-2">
                 <h3>Your information</h3>
               </div>
@@ -98,7 +98,7 @@
                   </div>
                 </div>
                 <fieldset class="form-group">
-                    <div  id="phone-formats"class="row mt-n4">
+                    <div  id="phone-formats"class="row mt-n4 pb-4">
                       <legend class="col-form-label col-sm-2 pt-0"></legend>
                       <div class="col-sm-10">
                 <div class="form-check form-check-inline">
@@ -114,7 +114,7 @@
             </fieldset>
                 </form>
             </div>
-            <div class="col">
+            <div class="col pl-5">
               <div class="row pb-3">
                 <h2>Your generated signature</h2>
               </div>
@@ -150,7 +150,7 @@
               <div class="row">
                 <button class="btn btn-primary" onclick="copySignature()">Copy your signature to the clipboard</button>
               </div>
-              <div id="confirmation" class="row pt-5" style="display: none">
+              <div id="confirmation" tabindex="-1" class="row pt-5" style="display: none">
                 <div class="alert alert-success" role="alert">
                   <h4 class="alert-heading">Well done!</h4>
                   <p>Your new signature has been copied to the clipboard. You can now paste it in your favorite email client.</p>
@@ -312,6 +312,7 @@
 
     function copySignature() {
       document.getElementById("confirmation").style.display = "block";
+      document.getElementById('confirmation').focus();
         const doc = document;
         const text = doc.getElementById("generated-signature");
         let range;
