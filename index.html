@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="container pb-5 m-1 m-sm-2 m-md-3 m-lg-4">
-      <div class="row pb-5">
+    <div class="container pb-5 m-2 m-sm-2 m-md-3 m-lg-4">
+      <div class="row pb-4">
         <h1>Hermes Email Signature Generator</h1>
       </div>
         <div class="row">
@@ -62,7 +62,7 @@
                     </fieldset>
                     <div class="form-group row align-items-center">
                       <label for="seniority" class="col-sm-2 col-form-label">Experience</label>
-                      <div class="custom-control custom-switch">
+                      <div class="custom-control custom-switch col-sm-10">
                         <input type="checkbox" class="custom-control-input" id="seniority">
                         <label class="custom-control-label" for="seniority">Senior experience</label>
                       </div>
@@ -151,6 +151,7 @@
                 <button class="btn btn-primary" onclick="copySignature()">Copy your signature to the clipboard</button>
               </div>
               <div id="confirmation" tabindex="-1" class="row pt-5" style="display: none">
+                <div class="col">
                 <div class="alert alert-success" role="alert">
                   <h4 class="alert-heading">Well done!</h4>
                   <p>Your new signature has been copied to the clipboard. You can now paste it in your favorite email client.</p>
@@ -158,6 +159,8 @@
                   <p class="mb-0 text-secondary">If some last adjustment is needed, this can be done directly in your email client. Please note however that this signature follows a chosen design: efficient, simple and minimalistic. The logo links to our website where more information about the company can be found (such as contact information). <b>Avoid changing the design or adding unnecessary information.</b></p>
                 </div>
               </div>
+              </div>
+
             </div>
         </div>
     </div>
@@ -338,7 +341,6 @@
 
         document.execCommand('copy');
         window.getSelection().removeAllRanges();
-        document.getElementById('clickMe').value = 'Copied to clipboard!';
     }
 </script>
 
